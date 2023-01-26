@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { StyledEngineProvider, ThemeProvider } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./contexts/AuthContext";
+import { CustomizationProvider } from "./contexts/CustomizationContext";
+import { WithAxios } from "./contexts/WithAxios";
+import { AppRoutes } from "./routes";
+import { theme } from "./theme";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <CustomizationProvider>
+          <WithAxios>
+            <ThemeProvider theme={theme}>
+              <StyledEngineProvider injectFirst>
+                <BrowserRouter>
+                  <ToastContainer
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable
+                    pauseOnHover={false}
+                    theme="light"
+                  />
+                  <AppRoutes />
+                </BrowserRouter>
+              </StyledEngineProvider>
+            </ThemeProvider>
+          </WithAxios>
+        </CustomizationProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 
