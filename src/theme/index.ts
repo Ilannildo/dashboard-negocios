@@ -40,6 +40,7 @@ export const theme = createTheme({
     },
     onSurface: {
       main: "#3c4b64",
+      dark: "#43425d",
     },
     onSurfaceVariant: {
       main: "#4b454d",

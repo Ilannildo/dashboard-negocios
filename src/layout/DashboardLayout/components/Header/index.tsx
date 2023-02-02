@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 
 // material-ui
-import { Avatar, Box, ButtonBase, Stack, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  ButtonBase,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { List } from "phosphor-react";
 import { useCustomization } from "../../../../hooks/useCustomization";
@@ -15,12 +22,13 @@ interface IHeader {
 const Header = ({ handleLeftDrawerToggle }: IHeader) => {
   const theme = useTheme();
   const { opened } = useCustomization();
+  const matchesSM = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
       <Box
         sx={{
-          marginLeft: opened ? 30 : 12,
+          marginLeft: opened && !matchesSM ? 30 : matchesSM ? 2 : 10,
           display: "flex",
           [theme.breakpoints.down("md")]: {
             width: "auto",

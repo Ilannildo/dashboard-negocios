@@ -12,12 +12,22 @@ export const ProtectedRoute = ({ children }: IProtectedRoutes) => {
 
   const isToken = isAuthenticated();
 
-  const { isLoading, data } = useAuthenticatedUser({
+  const { isLoading, data, isError } = useAuthenticatedUser({
     enabled: isToken,
   });
   const location = useLocation();
 
   if (!isToken) {
+    return (
+      <Navigate
+        to={`/login?callback-url=${location.pathname}`}
+        replace
+        state={{ from: location }}
+      />
+    );
+  }
+
+  if (isError) {
     return (
       <Navigate
         to={`/login?callback-url=${location.pathname}`}

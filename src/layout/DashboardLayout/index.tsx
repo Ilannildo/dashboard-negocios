@@ -134,7 +134,7 @@ const DashboardLayout = () => {
       ],
     },
     {
-      id: "pages",
+      id: "buyer",
       type: "group",
       title: "Comprador",
       children: [

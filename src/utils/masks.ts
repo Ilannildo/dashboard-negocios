@@ -18,6 +18,31 @@ export const maskCpf = (value: string) => {
     .replace(/(-\d{2})\d+?$/, "$1");
 };
 
+export function formatCNPJ(cnpj: string) {
+  // Remover caracteres não numéricos
+  cnpj = cnpj.replace(/\D/g, "");
+
+  // Adicionar pontos e hífen usando regex
+  cnpj = cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+
+  return cnpj;
+}
+
+export const cnpjMask = (e: any) => {
+  var x = e
+    .replace(/\D/g, "")
+    .match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+  e = !x[2]
+    ? x[1]
+    : x[1] + "." + x[2] + "." + x[3] + "/" + x[4] + (x[5] ? "-" + x[5] : "");
+  return e;
+};
+// export const cnpjMask = (value: string) => {
+//   return value
+//     .replace(/\D/g, "")
+//     .replace(/^(\d{2})(\d{3})?(\d{3})?(\d{4})?(\d{2})?/, "$1 $2 $3/$4-$5");
+// };
+
 export const maskZipCode = (value: string) => {
   return value.replace(/^(\d{5})(\d)/, "$1-$2");
 };

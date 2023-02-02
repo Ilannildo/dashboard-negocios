@@ -1,4 +1,4 @@
-import { Box, Drawer, useTheme } from "@mui/material";
+import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import LogoSection from "../../../../components/LogoSection";
 import { drawerWidth } from "../../../../utils/constant";
 import MenuList from "../MenuList";
@@ -17,6 +17,7 @@ export const DashboardPanelSidebar = ({
   items,
 }: ISidebar) => {
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down("md"));
 
   const container =
     window !== undefined ? () => window.document.body : undefined;
@@ -25,7 +26,7 @@ export const DashboardPanelSidebar = ({
     <Box component="nav" sx={{ flexShrink: { md: 0 } }}>
       <Drawer
         container={container}
-        variant="permanent"
+        variant={!matchesSM ? "permanent" : "temporary"}
         anchor="left"
         open={drawerOpen}
         onClose={drawerToggle}
