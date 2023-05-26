@@ -40,7 +40,7 @@ export const DashboardPanelSidebar = ({
             overflowX: "hidden",
             "& .MuiDrawer-paper": {
               width: drawerWidth,
-              background: theme.palette.onSurface.main,
+              background: theme.palette.secondary.main,
               color: theme.palette.text.primary,
               borderRight: "none",
               transition: theme.transitions.create("width", {
@@ -65,7 +65,7 @@ export const DashboardPanelSidebar = ({
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
               }),
-              background: theme.palette.onSurface.main,
+              background: theme.palette.secondary.main,
               color: theme.palette.text.primary,
               borderRight: "none",
               overflowX: "hidden",

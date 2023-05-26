@@ -2,6 +2,7 @@ import { StyledEngineProvider, ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CustomizationProvider } from "./contexts/CustomizationContext";
 import { WithAxios } from "./contexts/WithAxios";
